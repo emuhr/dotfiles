@@ -1,0 +1,30 @@
+#pcm.!default {
+#    type plug
+#    slave { pcm "pulse" }
+#}
+
+#pcm.pulse {
+#    type pulse
+#}
+
+#ctl.mixer0 {
+#    type hw
+#    card 0
+#}
+
+
+pcm.pulse {
+    type pulse
+}
+
+ctl.pulse {
+    type pulse
+}
+
+pcm.!default {
+    type pulse
+}
+ctl.!default {
+    type pulse
+}
+
