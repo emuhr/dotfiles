@@ -18,12 +18,21 @@ myModMask = mod4Mask  -- sets modkey to the super key
 
 
 --------------------------------------------------------------------------------
+---- configure floating windows
+--------------------------------------------------------------------------------
+myManageHook = composeAll
+    [ className =? "QjackCtl" --> doFloat
+    --, className =? "Vncviewer" --> doFloat
+    ]
+
+--------------------------------------------------------------------------------
 ---- autostart
 --------------------------------------------------------------------------------
 myStartupHook :: X ()
 myStartupHook = do
   setWMName "LG3D"
-  spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x292d3e --height 18 &"  
+  spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x292d3e --height 24 &"
+  spawnOnce "/usr/bin/emacs --daemon &"
 
 --------------------------------------------------------------------------------
 ---- main
@@ -31,7 +40,10 @@ myStartupHook = do
 main = do
     xmproc <- spawnPipe "xmobar /home/emanuel/.config/xmobar/xmobarrc"
     xmonad $ docks defaultConfig
-        { layoutHook = avoidStruts  $  layoutHook defaultConfig
+        { --{manageHook = myManageHook <+> manageHook defaultConfig 
+        manageHook = myManageHook <+> manageHook defaultConfig
+        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+        -- , manageHook=manageHook def <+> manageDocks
         , modMask = myModMask
         , terminal = myTerminal
         , logHook = dynamicLogWithPP xmobarPP
