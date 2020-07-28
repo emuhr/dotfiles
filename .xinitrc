@@ -35,12 +35,7 @@ qjackctl &
 
 xrdb /home/emanuel/.Xresources
 
-# 
-# emacs daemon
-# 
-emacs --daemon
-
 #exec i3
 #exec openbox-session
 
-exec xmonad
+# exec xmonad
