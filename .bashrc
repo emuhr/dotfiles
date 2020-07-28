@@ -30,5 +30,9 @@ export PATH=~/.emacs.d/bin:$PATH
 # .local/bin
 export PATH=~/.local/bin:$PATH
 
+# Go
+export PATH=$PATH:$(go env GOPATH)/bin
+export GOPATH=$(go env GOPATH)
+
 # git dot files bare repository config
 alias config='/usr/bin/git --git-dir=/home/emanuel/.cfg/ --work-tree=/home/emanuel'
