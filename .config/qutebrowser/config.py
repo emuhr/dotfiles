@@ -554,7 +554,8 @@ c.auto_save.session = False
 ## Allow websites to read canvas elements. Note this is needed for some
 ## websites to work properly.
 ## Type: Bool
-# c.content.canvas_reading = True
+## check if this breaks websites
+c.content.canvas_reading = False
 
 ## Which cookies to accept.
 ## Type: String
@@ -604,17 +605,17 @@ c.auto_save.session = False
 ## Value to send in the `Accept-Language` header. Note that the value
 ## read from JavaScript is always the global value.
 ## Type: String
-# c.content.headers.accept_language = 'en-US,en;q=0.9'
+c.content.headers.accept_language = 'en-US,en;q=0.5'
 
 ## Custom headers for qutebrowser HTTP requests.
 ## Type: Dict
-# c.content.headers.custom = {}
+c.content.headers.custom = {"accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"}
 
 ## Value to send in the `DNT` header. When this is set to true,
 ## qutebrowser asks websites to not track your identity. If set to null,
 ## the DNT header is not sent at all.
 ## Type: Bool
-# c.content.headers.do_not_track = True
+c.content.headers.do_not_track = True
 
 ## When to send the Referer header. The Referer header tells websites
 ## from which website you were coming from when visiting them. No restart
@@ -639,6 +640,7 @@ c.auto_save.session = False
 ## read from JavaScript is always the global value.
 ## Type: FormatString
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
+c.content.headers.user_agent = 'Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0'
 
 ## Enable host blocking.
 ## Type: Bool
@@ -827,7 +829,7 @@ c.content.pdfjs = True
 
 ## Enable WebGL.
 ## Type: Bool
-# c.content.webgl = True
+c.content.webgl = False
 
 ## Which interfaces to expose via WebRTC. On Qt 5.10, this option doesn't
 ## work because of a Qt bug.
