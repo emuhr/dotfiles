@@ -1,0 +1,11 @@
+.include /etc/pulse/default.pa
+
+set-card-profile 1 output:multichannel-output
+
+# presonus audiobox sink
+set-default-sink alsa_output.usb-Presonus_AudioBox_1818_VSL-00.multichannel-output
+
+# acer monitor sink
+#set-default-sink <alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2>
+
+
