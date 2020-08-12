@@ -11,7 +11,7 @@ import XMonad.Hooks.SetWMName
 ---- variables
 --------------------------------------------------------------------------------
 myTerminal :: String
-myTerminal = "kitty"  -- sets the default terminal
+myTerminal = "alacritty"  -- sets the default terminal
 
 myModMask :: KeyMask
 myModMask = mod4Mask  -- sets modkey to the super key
@@ -21,7 +21,8 @@ myModMask = mod4Mask  -- sets modkey to the super key
 ---- configure floating windows
 --------------------------------------------------------------------------------
 myManageHook = composeAll
-    [ className =? "QjackCtl" --> doFloat
+    [ 
+    className =? "QjackCtl" --> doFloat
     --, className =? "Vncviewer" --> doFloat
     ]
 
