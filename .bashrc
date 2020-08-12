@@ -6,14 +6,12 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
 
 alias ll='ls -lhat'
 alias vi='vim'
 alias tmux="TERM=screen-256color-bce tmux"
 alias supercollider="scide"
 alias rsbcl="rlwrap sbcl"
-alias pacman-upgrade="sudo pacman -Suy"
 
 # tidalvim
 export PATH=$PATH:/home/emanuel/.vim/plugged/vim-tidal/bin/
@@ -36,3 +34,15 @@ export GOPATH=$(go env GOPATH)
 
 # git dot files bare repository config
 alias config='/usr/bin/git --git-dir=/home/emanuel/.cfg/ --work-tree=/home/emanuel'
+
+# prompt
+function git_status {
+  if [ -d .git ]; then
+    RESULT=$(git branch --show-current)
+  elif [[ "$PWD" == "/home/emanuel/.config" ]]; then
+    RESULT=$(config branch --show-current)
+  fi;
+  echo $RESULT;
+}
+
+PS1="[\W] \$(git_status)$ "
