@@ -1,8 +1,10 @@
 .include /etc/pulse/default.pa
 
-set-card-profile 1 output:multichannel-output
+# dont use indexes these can change. Run pacmd list-cards instead and take the "name" value
+set-card-profile alsa_card.usb-Presonus_AudioBox_1818_VSL-00 output:multichannel-output
 
 # presonus audiobox sink
+# run pacmd list-sinks | grep -e 'name:' -e 'index:'
 set-default-sink alsa_output.usb-Presonus_AudioBox_1818_VSL-00.multichannel-output
 
 # acer monitor sink
