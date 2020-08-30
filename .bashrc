@@ -32,6 +32,9 @@ export PATH=~/.local/bin:$PATH
 export PATH=$PATH:$(go env GOPATH)/bin
 export GOPATH=$(go env GOPATH)
 
+# libvirt uri
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 # git dot files bare repository config
 alias config='/usr/bin/git --git-dir=/home/emanuel/.cfg/ --work-tree=/home/emanuel'
 
