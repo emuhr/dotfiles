@@ -527,7 +527,7 @@ c.auto_save.session = False
 ## Automatically start playing `<video>` elements. Note: On Qt < 5.11,
 ## this option needs a restart and does not support URL patterns.
 ## Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 ## Enable support for the HTML 5 web application cache feature. An
 ## application cache acts like an HTTP cache in some sense. For documents
@@ -535,7 +535,7 @@ c.auto_save.session = False
 ## first ask the application cache for the contents, before hitting the
 ## network.
 ## Type: Bool
-# c.content.cache.appcache = True
+c.content.cache.appcache = True
 
 ## Maximum number of pages to hold in the global memory page cache. The
 ## page cache allows for a nicer user experience when navigating forth or
@@ -543,7 +543,7 @@ c.auto_save.session = False
 ## to _n_ pages. For more information about the feature, please refer to:
 ## http://webkit.org/blog/427/webkit-page-cache-i-the-basics/
 ## Type: Int
-# c.content.cache.maximum_pages = 0
+c.content.cache.maximum_pages = 1000
 
 ## Size (in bytes) of the HTTP network cache. Null to use the default
 ## value. With QtWebEngine, the maximum supported value is 2147483647 (~2
@@ -640,7 +640,7 @@ c.content.headers.do_not_track = True
 ## read from JavaScript is always the global value.
 ## Type: FormatString
 # c.content.headers.user_agent = 'Mozilla/5.0 ({os_info}) AppleWebKit/{webkit_version} (KHTML, like Gecko) {qt_key}/{qt_version} {upstream_browser_key}/{upstream_browser_version} Safari/{webkit_version}'
-c.content.headers.user_agent = 'Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0'
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0'
 
 ## Enable host blocking.
 ## Type: Bool
@@ -935,7 +935,7 @@ c.downloads.location.directory = "/home/emanuel/downloads"
 ## either a float value with a "pt" suffix, or an integer value with a
 ## "px" suffix.
 ## Type: String
-# c.fonts.default_size = '10pt'
+c.fonts.default_size = '10pt'
 
 ## Font used for the downloadbar.
 ## Type: Font
@@ -999,7 +999,7 @@ c.downloads.location.directory = "/home/emanuel/downloads"
 
 ## Default font size (in pixels) for regular text.
 ## Type: Int
-# c.fonts.web.size.default = 16
+c.fonts.web.size.default = 20
 
 ## Default font size (in pixels) for fixed-pitch text.
 ## Type: Int
@@ -1591,7 +1591,6 @@ c.tabs.background = True
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-# c.url.default_page = 'https://start.duckduckgo.com/'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
@@ -1640,7 +1639,7 @@ c.tabs.background = True
 
 ## Default zoom level.
 ## Type: Perc
-# c.zoom.default = '100%'
+# c.zoom.default = '120%'
 
 ## Available zoom levels.
 ## Type: List of Perc
@@ -1971,9 +1970,24 @@ config.set(
     ],
 )
 
+
+# bindings
 # mpv bind 
 # :bind ,m spawn mpv {url}
-config.bind(',e', 'spawn mpv {url}')
+config.bind(',M', 'spawn mpv {url}')
+config.bind(',m', 'hint links spawn mpv {hint-url}')
+config.bind(',d', 'hint links spawn st -e youtube-dl {hint-url}')
+config.bind(',x', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
 
 # open pdfs with pdf.js
 config.pdfjs = True
+
+# dark mode
+config.set("colors.webpage.darkmode.enabled", True)
+
+# Do not show the tab and status bar by default
+config.set('statusbar.show', 'never')
+config.set('tabs.show', 'never')
+
+# start page
+c.url.start_pages = ['/home/emanuel/web/homepage/html/index.html']
